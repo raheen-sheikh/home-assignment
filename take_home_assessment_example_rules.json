@@ -1,0 +1,51 @@
+[
+    {
+        "rule_id": "RULE_001",
+        "name": "High Value Transaction Alert",
+        "description": "Flag transactions with an amount greater than a specified threshold.",
+        "action": "Alert",
+        "severity": "High"
+    },
+    {
+        "rule_id": "RULE_002",
+        "name": "Multiple Small Transactions in Short Period",
+        "description": "Identify users with a high frequency of small transactions within a short time frame.",
+        "action": "Review",
+        "severity": "Medium"
+    },
+    {
+        "rule_id": "RULE_003",
+        "name": "Unusual Transaction Type for User",
+        "description": "Flag transactions where the type is unusual for a given user's historical patterns.",
+        "action": "Investigate",
+        "severity": "Medium"
+    },
+    {
+        "rule_id": "RULE_004",
+        "name": "Transaction to High-Risk Merchant",
+        "description": "Alert on transactions made to merchants identified as high-risk.",
+        "action": "Block",
+        "severity": "Critical"
+    },
+    {
+        "rule_id": "RULE_005",
+        "name": "Cross-Border Transaction Anomaly",
+        "description": "Flag transactions where the merchant country is different from the user's typical transaction countries and the amount is significant.",
+        "action": "Alert",
+        "severity": "High"
+    },
+    {
+        "rule_id": "RULE_006",
+        "name": "Transaction Outside Normal Hours",
+        "description": "Identify transactions occurring outside typical business hours for the user's timezone.",
+        "action": "Review",
+        "severity": "Low"
+    },
+    {
+        "rule_id": "RULE_007",
+        "name": "Large Cash Withdrawal",
+        "description": "Flag large cash withdrawals from ATMs.",
+        "action": "Alert",
+        "severity": "High"
+    }
+]
