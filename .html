@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RuleScope — Transaction Rule Debugger</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href=".css">
+</head>
+
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-box">RS</div>
+            RuleScope
+        </div>
+        <div class="header-stats">
+            <div class="hstat">
+                <div class="hstat-dot" style="background:var(--green)"></div><span id="stat-pass">—</span>
+            </div>
+            <div class="hstat">
+                <div class="hstat-dot" style="background:var(--red)"></div><span id="stat-fail">—</span>
+            </div>
+            <div class="hstat">
+                <div class="hstat-dot" style="background:var(--ink3)"></div><span id="stat-total">—</span>
+            </div>
+        </div>
+        <div class="header-tabs">
+            <button class="tab-btn active" onclick="switchView('debug')">Debug</button>
+            <button class="tab-btn" onclick="switchView('matrix')">Matrix</button>
+            <button class="tab-btn" onclick="switchView('stats')">Stats</button>
+        </div>
+    </div>
+
+    <!-- ===================== MAIN DEBUG VIEW ===================== -->
+    <div class="app" id="main-app">
+
+        <!-- LEFT: Rules List -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Rules</span>
+                <span class="badge badge-ink" id="rule-count">— rules</span>
+            </div>
+            <div class="panel-body" id="rules-list"></div>
+        </div>
+
+        <!-- CENTER: Transactions Table -->
+        <div class="main-panel">
+            <div class="toolbar">
+                <div class="search-wrap">
+                    <span class="search-icon">⌕</span>
+                    <input class="search-input" id="search-input" placeholder="Search transactions..."
+                        oninput="renderTable()">
+                </div>
+                <button class="filter-btn active" id="filter-all" onclick="setFilter('all')">All</button>
+                <button class="filter-btn" id="filter-pass" onclick="setFilter('pass')">Pass</button>
+                <button class="filter-btn" id="filter-fail" onclick="setFilter('fail')">Fail</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TXN ID</th>
+                            <th>Date / Time</th>
+                            <th>Amount</th>
+                            <th>Currency</th>
+                            <th>Type</th>
+                            <th>Merchant</th>
+                            <th>Country</th>
+                            <th>Rule Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tx-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RIGHT: Inspector -->
+        <div class="panel inspector">
+            <div class="panel-header">
+                <span class="panel-title">Inspector</span>
+                <span class="badge badge-ink" id="inspector-rule-badge">no rule</span>
+            </div>
+            <div class="panel-body" id="inspector-body">
+                <div class="empty-state">
+                    <div class="empty-icon">◎</div>
+                    <div>Select a transaction</div>
+                    <div style="font-size:9px;margin-top:4px">Click any row to inspect</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===================== MATRIX VIEW ===================== -->
+    <div id="matrix-view">
+        <div class="view-title">Rule × Transaction Hit Matrix</div>
+        <div id="matrix-content"></div>
+    </div>
+
+    <!-- ===================== STATS VIEW ===================== -->
+    <div id="stats-view">
+        <div class="view-title">Rule Analytics</div>
+        <div id="stats-content"></div>
+    </div>
+
+</body>
+
+<script src="app.js"></script>
+</html>
